@@ -3,7 +3,14 @@ body { min-width: 320px }
     background-color: #d3d3d3;
     color: #000;
     height: auto;
-    padding: 0 40px;
+    padding: 0 40px !important;
+}
+
+@media (max-width: 1024px){
+    #header {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
 }
 
 #site-name a{
@@ -38,6 +45,7 @@ input[type=submit].default,
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
     color: #fff;
+    margin: 0 !important;
 }
 
 div.breadcrumbs,
@@ -190,12 +198,6 @@ html { overflow-x: hidden }
 }
 
 @media (max-width: 1024px) {
-    #nav-activate {
-        margin-top: 24px;
-        right: 35px;
-        line-height: 45px !important;
-    }
-
     .nav-icon { height: 15px }
 
     #main-menu {
@@ -205,7 +207,6 @@ html { overflow-x: hidden }
     #main-menu a { margin-bottom: 12px }
     #main-menu .account { margin-top: 0 }
     #user-tools { margin-left: 10px !important }
-    #header { align-items: flex-start }
 }
 
 @media (min-width: 700px) {
@@ -218,14 +219,28 @@ html { overflow-x: hidden }
 
 #user-tools .ow-notifications {
     bottom: 0;
-    right: -0;
+    right: 0;
     padding: 0;
     min-width: 40px;
     text-align: center;
+    margin-right: 10px;
+}
+@media (max-width: 1024px) {
+    .ow-notifications {
+        line-height: 40px !important;
+        position: relative !important;
+        top: unset !important;
+        right: unset !important;
+    }
 }
 #user-tools .ow-notifications .bell-icon{
     height: 24px;
     top: 0
+}
+#user-tools .ow-notifications #ow-notification-count{
+    top: 0;
+    left: unset;
+    right: 0;
 }
 
 img, svg {
