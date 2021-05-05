@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='openwisp-makedit',
     version='0.1',
-    packages=['ow-makedit-theme'],
+    packages=['ow-makedit','ow-makedit-theme'],
     url='',
     license='',
     author='Pedro Peña',
