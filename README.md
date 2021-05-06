@@ -2,9 +2,9 @@
 
 openwisp-makedit is a python packate to install with openwisp2 with custom modifications
 
-## ow-makedit app
+## ow-makedit-theme
 
-The app `ow-makedit` must be added to ``INSTALLED_APPS`` before `openwisp_users.accounts`, `openwisp_notifications` and `openwisp_utils.admin_theme` to be able to override templates.
+This app is needed to override default openwisp theme. It's important to add `ow-makedit-theme` to `INSTALLED_APPS` before `openwisp_users.accounts`, `openwisp_notifications` and `openwisp_utils.admin_theme`.
 
 Then you have to add the following variable to ``settings.py``
 
@@ -12,5 +12,12 @@ Then you have to add the following variable to ``settings.py``
         {'type': 'text/css', 'href': '/static/makedit.css', 'rel': 'stylesheet', 'media': 'all'},
         {'type': 'image/x-icon', 'href': '/static/makedit.ico', 'rel': 'icon'}
     ]
+
+## ow-makedit
+
+The app `ow-makedit` must be added to the end of``INSTALLED_APPS``.
+
+This app contains the custom modifications over openwisp.
+
 
 

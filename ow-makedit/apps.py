@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from openwisp_controller.config.signals import device_registered
+from django.contrib import admin
 import types
 
 class owMakeditConfig(AppConfig):
@@ -8,6 +8,7 @@ class owMakeditConfig(AppConfig):
 
     def ready(self, *args, **kwargs):
         self.replace_device_get_context()
+        self.removeVpnAdmin()
 
     def replace_device_get_context(self):
         from openwisp_controller.config.models import Config
@@ -19,3 +20,10 @@ class owMakeditConfig(AppConfig):
             return context
         Config.get_context = config_get_context
 
+    def removeVpnAdmin(selfself):
+        from openwisp_controller.config.models import Vpn
+        # remove vpn admin
+        admin.site.unregister(Vpn)
+        # remove vpn menu item
+        from django.conf import settings
+        del settings.OPENWISP_DEFAULT_ADMIN_MENU_ITEMS[4]
