@@ -9,6 +9,7 @@ class owMakeditConfig(AppConfig):
     def ready(self, *args, **kwargs):
         self.replace_device_get_context()
         self.removeVpnAdmin()
+        self.add_device_status_column()
 
     def replace_device_get_context(self):
         from openwisp_controller.config.models import Config
@@ -27,3 +28,12 @@ class owMakeditConfig(AppConfig):
         # remove vpn menu item
         from django.conf import settings
         del settings.OPENWISP_DEFAULT_ADMIN_MENU_ITEMS[4]
+
+    def add_device_status_column(self):
+        from django.urls import reverse
+        from django.utils.safestring import mark_safe
+        def device_status_link(self):
+            return mark_safe('<a href="' + reverse('mk-device-status', args=[self.id]) + '">Status</a>')
+        device_status_link.short_description = ""
+        from openwisp_monitoring.device.admin import DeviceAdmin
+        DeviceAdmin.list_display.append(device_status_link)

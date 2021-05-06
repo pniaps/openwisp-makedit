@@ -1,0 +1,104 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block content %}
+    <div class="uk-grid uk-grid-match">
+        <div class="uk-width-1-1">
+            <div class="box">
+                <div class="uk-grid uk-flex-middle">
+                <div class="uk-width-1-3@s uk-flex uk-flex-middle uk-flex-center">
+                    <img src="data:image/png;base64,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" alt="">
+                </div>
+                <div class="uk-width-2-3@s">
+                    <div>
+                        <table class="status">
+                        <tr>
+                            <td class="device-info-key" width="100">Model:</td>
+                            <td class="router-details-up">{{ device.name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="device-info-key">MAC Address:</td>
+                            <td class="router-details-up">{{ device.mac_address }}</td>
+                        </tr>
+                        <tr>
+                            <td class="device-info-key">IP Address:</td>
+                            <td class="router-details-up">{{ device.last_ip }}</td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2@m uk-grid-margin">
+            <div class="box">
+                <div>Up Time</div>
+                <div class="router-upTime">
+                    <div class="upTime-num">
+                        <div>{{ uptime.days }}</div>
+                        <p>days</p>
+                    </div>
+                    <div class="upTime-num">
+                        <div>{{ uptime.hours }}</div>
+                        <p>hours</p>
+                    </div>
+                    <div class="upTime-num">
+                        <div>{{ uptime.minutes }}</div>
+                        <p>minutes</p>
+                    </div>
+                    <div class="upTime-num">
+                        <div>{{ uptime.seconds }}</div>
+                        <p>seconds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2@m uk-grid-margin">
+            <div class="box">
+                <div>Load Average</div>
+                <div class="router-upTime">
+                    <div class="upTime-num">
+                        <div>{{ device_data.data.resources.load.0 }}</div>
+                        <p>1 min</p>
+                    </div>
+                    <div class="upTime-num">
+                        <div>{{ device_data.data.resources.load.1 }}</div>
+                        <p>5 mins</p>
+                    </div>
+                    <div class="upTime-num">
+                        <div>{{ device_data.data.resources.load.2 }}</div>
+                        <p>15 mins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if clients %}
+        <div class="uk-width-1-1 uk-grid-margin">
+            <div class="box">
+                <table class="wifi-clients">
+                      <thead>
+                          <tr>
+                              <th class="mac">
+                                  {% trans 'Associated client' %}
+                                  {% trans 'MAC address' %}
+                              </th>
+                              <th class="vendor">
+                                  {% trans 'Vendor' %}
+                              </th>
+                              <th>
+                                  {% trans 'Frequency' %}
+                              </th>
+                          </tr>
+                      </thead>
+                      {% for client in clients %}
+                      <tr>
+                          <td class="mac">{{ client.mac }}</td>
+                          <td class="vendor">{{ client.vendor }}</td>
+                          <td class="mac">{{ client.band }} GHz</td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
