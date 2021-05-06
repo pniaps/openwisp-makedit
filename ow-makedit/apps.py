@@ -10,6 +10,7 @@ class owMakeditConfig(AppConfig):
         self.replace_device_get_context()
         self.removeVpnAdmin()
         self.add_device_status_column()
+        self.remove_organization_field()
 
     def replace_device_get_context(self):
         from openwisp_controller.config.models import Config
@@ -37,3 +38,11 @@ class owMakeditConfig(AppConfig):
         device_status_link.short_description = ""
         from openwisp_monitoring.device.admin import DeviceAdmin
         DeviceAdmin.list_display.append(device_status_link)
+
+    def remove_organization_field(self):
+        from openwisp_monitoring.device.admin import DeviceAdmin
+        from openwisp_controller.config.admin import TemplateAdmin
+        DeviceAdmin.list_display.remove('organization')
+        DeviceAdmin.fields.remove('organization')
+        TemplateAdmin.list_display.remove('organization')
+        TemplateAdmin.fields.remove('organization')
