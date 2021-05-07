@@ -17,7 +17,7 @@ body { min-width: 320px }
     display: block;
     width: 150px;
     height: 70px;
-    background: url(../../../static/makedit.png) no-repeat scroll 0 50% / 100%;
+    background: url(makedit.png) no-repeat scroll 0 50% / 100%;
     text-indent: -2000px;
     overflow: hidden;
 }
