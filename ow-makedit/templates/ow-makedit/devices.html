@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n static admin_list %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style type="text/css">
+td.field-health_status,
+.field-health_status .readonly{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.health-unknown{ color: grey }
+.health-ok{ color: green }
+.health-problem{ color: orange }
+.health-critical{ color: red }</style>
+{% endblock %}
+
+{% block content %}
+    {% result_list cl %}
+{% endblock %}

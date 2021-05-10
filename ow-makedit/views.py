@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
 from swapper import load_model
 
-Device = load_model('config', 'Device')
+from openwisp_controller.config.models import Device
 DeviceData = load_model('device_monitoring', 'DeviceData')
 
 
@@ -37,9 +37,30 @@ def device_status(request, device_id):
 
 
 
-    return render(request, 'device_status.html', {
+    return render(request, 'ow-makedit/device_status.html', {
         'device': device,
         'device_data': device_data,
         'uptime': uptime,
         'clients': clients
+    })
+
+def devices(request):
+    from django.contrib import admin
+    from django.urls import reverse
+    from django.utils.safestring import mark_safe
+    # return admin.sites.site._registry[Device].changelist_view(request)
+    # options.py:723 (get_changelist_instance)
+
+    cl = admin.sites.site._registry[Device].get_changelist_instance(request)
+    cl.formset = None
+    def device_status_link(self):
+        return mark_safe('<a href="' + reverse('mk-device-status', args=[self.id]) + '"><b>'+self.name+'</b></a>')
+    device_status_link.short_description = "name"
+    cl.list_display = [device_status_link,'health_status','config_status','mac_address','ip']
+
+    devices = Device.objects.all()
+    return render(request, 'ow-makedit/devices.html', {
+        'devices': devices,
+            'cl': cl,
+            'opts': cl.opts,
     })
