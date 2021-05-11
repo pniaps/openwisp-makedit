@@ -43,6 +43,6 @@ class owMakeditConfig(AppConfig):
         from openwisp_monitoring.device.admin import DeviceAdmin
         from openwisp_controller.config.admin import TemplateAdmin
         DeviceAdmin.list_display.remove('organization')
-        DeviceAdmin.fields.remove('organization')
+        # DeviceAdmin.fields.remove('organization')
         TemplateAdmin.list_display.remove('organization')
         TemplateAdmin.fields.remove('organization')
