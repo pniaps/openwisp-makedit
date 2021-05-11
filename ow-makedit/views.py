@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
+from openwisp_controller.config.models import Device
 from swapper import load_model
 
 from openwisp_controller.config.models import Device
@@ -64,3 +65,8 @@ def devices(request):
             'cl': cl,
             'opts': cl.opts,
     })
+
+def map(request):
+    return render(request, 'ow-makedit/map.html', {
+    })
+
